@@ -20,7 +20,7 @@ fun NavigationRouteMap(
 
     NavHost(navController = navController, startDestination = getStartDestination(isLogin)) {
         composable(route = Navigation.OnBoardingScreen.route) {
-            OnBoardingScreen(context)
+            OnBoardingScreen(context,navController)
         }
         composable(route = Navigation.HomeScreen.route) {
             HomeScreen(database, navController)
