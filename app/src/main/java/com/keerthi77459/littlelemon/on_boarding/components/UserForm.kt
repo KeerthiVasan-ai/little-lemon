@@ -17,11 +17,13 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.keerthi77459.littlelemon.components.BuildButton
 import com.keerthi77459.littlelemon.components.BuildTextField
+import com.keerthi77459.littlelemon.navigation.Navigation
 
 @Composable
-fun BuildUserForm(context: Context) {
+fun BuildUserForm(context: Context, navController: NavController) {
 
     var firstName by remember {
         mutableStateOf("")
@@ -68,12 +70,18 @@ fun BuildUserForm(context: Context) {
         )
         Spacer(modifier = Modifier.height(100.dp))
         BuildButton(buttonText = "Register") {
-            performLogin(context, firstName, lastName, email)
+            performLogin(context, firstName, lastName, email, navController)
         }
     }
 }
 
-fun performLogin(context: Context, firstName: String, lastName: String, email: String) {
+fun performLogin(
+    context: Context,
+    firstName: String,
+    lastName: String,
+    email: String,
+    navController: NavController
+) {
     val sharedPref: SharedPreferences =
         context.getSharedPreferences("LoginPreferences", Context.MODE_PRIVATE)
     val editor: SharedPreferences.Editor = sharedPref.edit()
@@ -81,4 +89,5 @@ fun performLogin(context: Context, firstName: String, lastName: String, email: S
     editor.putString("last_name", lastName)
     editor.putString("email", email)
     editor.apply()
+    navController.navigate(Navigation.HomeScreen.route)
 }

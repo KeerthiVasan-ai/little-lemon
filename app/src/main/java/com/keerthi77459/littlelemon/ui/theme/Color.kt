@@ -12,3 +12,4 @@ val Pink40 = Color(0xFF7D5260)
 
 val littlelemon_gray = Color(0xFF495E57)
 val littlelemon_yellow = Color(0xFFF4CE14)
+val littlelemon_foodSelection_color = Color(0x99AFAFAF)

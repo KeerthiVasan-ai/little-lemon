@@ -17,13 +17,15 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.keerthi77459.littlelemon.R
 import com.keerthi77459.littlelemon.on_boarding.components.BuildBoxUI
 import com.keerthi77459.littlelemon.on_boarding.components.BuildUserForm
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun OnBoardingScreen(context: Context) {
+fun OnBoardingScreen(context: Context, navController: NavController) {
     Scaffold(
         modifier = Modifier.fillMaxWidth(),
     ) {
@@ -42,7 +44,7 @@ fun OnBoardingScreen(context: Context) {
                 contentScale = ContentScale.Fit
             )
             BuildBoxUI()
-            BuildUserForm(context)
+            BuildUserForm(context,navController)
         }
     }
 }
@@ -51,6 +53,6 @@ fun OnBoardingScreen(context: Context) {
 @Preview(showBackground = true)
 @Composable
 fun OnBoardingScreenPreview() {
-    OnBoardingScreen(context = LocalContext.current)
+    OnBoardingScreen(context = LocalContext.current, rememberNavController())
 }
 
